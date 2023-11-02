@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://d06ws4g0pu0q0" path="res://Assets/Brick-Blue.png" id="1_wihfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8y7td"]
-size = Vector2(401, 98)
+size = Vector2(100, 25)
 
 [node name="brick" type="RigidBody2D"]
+collision_layer = 8
 gravity_scale = 2.66454e-15
 lock_rotation = true
 freeze = true
 script = ExtResource("1_qs81v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_wihfi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
