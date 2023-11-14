@@ -60,14 +60,16 @@ brick_scene = ExtResource("7_ewu24")
 
 [node name="Game Over" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 218.053)
-scale = Vector2(5.96046e-08, 5.96046e-08)
+scale = Vector2(1e-05, 1e-05)
 stream = ExtResource("8_dphqb")
-volume_db = -12.876
+volume_db = -16.838
 
 [node name="Ball Passing By" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 218)
 scale = Vector2(0.000244141, 0.000244141)
 stream = ExtResource("8_ejjrg")
+volume_db = 2.476
+pitch_scale = 1.76
 
 [node name="Ball Hit Paddle" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, 216.562)

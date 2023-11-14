@@ -15,6 +15,7 @@ var speed_up_factor = 1.05
 var start_position: Vector2
 var last_collider_id
 
+@onready var ball_passing_by = $"../Ball Passing By"
 @onready var ball_hit_wall = $"../Ball Hit Wall"
 @onready var ball_hit_paddle = $"../Ball Hit Paddle"
 @onready var ball_hit_brick = $"../Ball Hit Brick"
@@ -51,6 +52,7 @@ func start_ball():
 	velocity = Vector2(randf_range(-1, 1), randf_range(-.1, -1)).normalized() * ball_speed
 
 func on_life_lost():
+	ball_passing_by.play()
 	lifes -= 1
 	if lifes == 0:
 		ui.game_over()
