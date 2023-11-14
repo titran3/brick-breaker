@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg51l3bqek7dh"]
+[gd_scene load_steps=12 format=3 uid="uid://bg51l3bqek7dh"]
 
 [ext_resource type="PackedScene" uid="uid://dr8cd24qi14ha" path="res://Scenes/paddle.tscn" id="1_5ydle"]
 [ext_resource type="PackedScene" uid="uid://t0xggh0fw305" path="res://Scenes/ball.tscn" id="2_52nnt"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cy0rpdefr6q52" path="res://Scenes/ui.tscn" id="5_yrqcq"]
 [ext_resource type="Script" path="res://Scenes/BrickSpawner.gd" id="6_w8f03"]
 [ext_resource type="PackedScene" uid="uid://dpv7qlphyh8ov" path="res://Scenes/brick.tscn" id="7_ewu24"]
+[ext_resource type="AudioStream" uid="uid://j6rohds2mt0w" path="res://Assets/sounds/death.mp3" id="8_dphqb"]
+[ext_resource type="AudioStream" uid="uid://bybjguhop8yux" path="res://Assets/sounds/ball_hit_paddle.wav" id="8_ejjrg"]
+[ext_resource type="AudioStream" uid="uid://dn0ofhmx4sihe" path="res://Assets/sounds/ball_hit_brick.wav" id="8_jlxxg"]
+[ext_resource type="AudioStream" uid="uid://cmhui6k7xogoe" path="res://Assets/sounds/ball_hit_wall.wav" id="9_ftknf"]
 
 [node name="Main" type="Node"]
 
@@ -15,6 +19,7 @@
 [node name="Paddle" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5ydle")]
 position = Vector2(2.08165e-12, 283)
 collision_layer = 2
+lock_rotation = true
 speed = 500
 camera = NodePath("../Camera2D")
 
@@ -52,3 +57,32 @@ position = Vector2(0, -142)
 [node name="Brick Spawner" type="Node" parent="."]
 script = ExtResource("6_w8f03")
 brick_scene = ExtResource("7_ewu24")
+
+[node name="Game Over" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 218.053)
+scale = Vector2(5.96046e-08, 5.96046e-08)
+stream = ExtResource("8_dphqb")
+volume_db = -12.876
+
+[node name="Ball Passing By" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 218)
+scale = Vector2(0.000244141, 0.000244141)
+stream = ExtResource("8_ejjrg")
+
+[node name="Ball Hit Paddle" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 216.562)
+scale = Vector2(0.015625, 0.015625)
+stream = ExtResource("8_ejjrg")
+
+[node name="Ball Hit Wall" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 206.25)
+scale = Vector2(0.0625, 0.0625)
+stream = ExtResource("9_ftknf")
+volume_db = 0.99
+
+[node name="Ball Hit Brick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, 165)
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("8_jlxxg")
+volume_db = 0.99
+pitch_scale = 1.13

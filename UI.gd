@@ -3,6 +3,7 @@ extends CanvasLayer
 
 class_name UI
 
+@onready var game_over_sound = $"../Game Over"
 @onready var lifes_label = %LifesLabel
 @onready var game_lost_container = $GameLostContainer
 @onready var level_won_container = $LevelWon
@@ -12,6 +13,7 @@ func set_lifes(lifes: int):
 	get_node("MarginContainer/HBoxContainer/LifesLabel").text = "Lifes: %d" % lifes
 	
 func game_over():
+	game_over_sound.play()
 	game_lost_container.show()
 
 func _on_game_lost_button_pressed():
