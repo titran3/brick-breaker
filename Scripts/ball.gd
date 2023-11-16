@@ -20,11 +20,13 @@ var last_collider_id
 @onready var ball_hit_paddle = $"../Ball Hit Paddle"
 @onready var ball_hit_brick = $"../Ball Hit Brick"
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var background_music = $"../Background Music"
 
 
 
 func _ready():
 	ui.set_lifes(lifes)
+	background_music.play()
 	start_position = position
 	death_zone.life_lost.connect(on_life_lost)
 
@@ -56,6 +58,7 @@ func on_life_lost():
 	lifes -= 1
 	if lifes == 0:
 		ui.game_over()
+		background_music.stop()
 	else:
 		life_lost.emit()
 		reset_ball()
