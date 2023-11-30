@@ -104,5 +104,5 @@ size_flags_vertical = 4
 text = "Next Level"
 
 [connection signal="pressed" from="GameLostContainer/Panel/VBoxContainer/GameLostButton" to="." method="_on_game_lost_button_pressed"]
-[connection signal="pressed" from="LevelWon/Panel/VBoxContainer/LevelWonButton" to="." method="_on_level_won_button_pressed"]
 [connection signal="pressed" from="LevelWon/Panel/VBoxContainer/LevelWonButton" to="." method="_on_game_lost_button_pressed"]
+[connection signal="pressed" from="LevelWon/Panel/VBoxContainer/LevelWonButton" to="." method="_on_level_won_button_pressed"]

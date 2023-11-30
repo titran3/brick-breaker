@@ -15,12 +15,12 @@ var speed_up_factor = 1.05
 var start_position: Vector2
 var last_collider_id
 
-@onready var ball_passing_by = $"../Ball Passing By"
-@onready var ball_hit_wall = $"../Ball Hit Wall"
-@onready var ball_hit_paddle = $"../Ball Hit Paddle"
-@onready var ball_hit_brick = $"../Ball Hit Brick"
+@onready var ball_passing_by = $"../Music Pack/Ball Passing By"
+@onready var ball_hit_wall = $"../Music Pack/Ball Hit Wall"
+@onready var ball_hit_paddle = $"../Music Pack/Ball Hit Paddle"
+@onready var ball_hit_brick = $"../Music Pack/Ball Hit Brick"
 @onready var collision_shape_2d = $CollisionShape2D
-@onready var background_music = $"../Background Music"
+@onready var background_music = $"../Music Pack/Background Music"
 
 
 
@@ -47,6 +47,8 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.get_normal())
 		ball_hit_wall.play()
 	
+	if (collider is Paddle):
+		$explode.emitting = true
 func start_ball():
 	position = start_position
 	randomize()
@@ -85,6 +87,7 @@ func ball_collision(collider):
 	
 	if collider.get_rid() == last_collider_id && collider is Brick:
 		ball_hit_brick.play()
+		
 		new_velocity.x = new_velocity.rotated(deg_to_rad(randf_range(-45, 45))).x * 10
 	else: 
 		last_collider_id == collider.get_rid()

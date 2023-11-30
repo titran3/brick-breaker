@@ -1,7 +1,8 @@
 GPUParticles2D
+WorldEnvironment
+Node
 AudioStreamPlayer2D
 Marker2D
-Node
 CollisionShape2D
 ShapeCast2D
 Sprite2D

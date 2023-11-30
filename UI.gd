@@ -3,12 +3,12 @@ extends CanvasLayer
 
 class_name UI
 
-@onready var level_pass = $"../Level Pass"
-@onready var game_over_sound = $"../Game Over"
+@onready var level_pass = $"../Music Pack/Level Pass"
+@onready var game_over_sound = $"../Music Pack/Game Over"
 @onready var lifes_label = %LifesLabel
 @onready var game_lost_container = $GameLostContainer
 @onready var level_won_container = $LevelWon
-@onready var game_win = $"../Game Win"
+@onready var game_win = $"../Music Pack/Game Win"
 
 func set_lifes(lifes: int):
 	get_node("MarginContainer/HBoxContainer/LifesLabel").text = "Lifes: %d" % lifes
