@@ -37,6 +37,7 @@ func _physics_process(delta):
 		
 	var collider = collision.get_collider()
 	if collider is Brick:
+		$brick.emitting = true
 		ball_hit_brick.play()
 		collider.decrease_level()
 		
@@ -46,6 +47,7 @@ func _physics_process(delta):
 	else:
 		velocity = velocity.bounce(collision.get_normal())
 		ball_hit_wall.play()
+		$wall.emitting = true
 	
 	if (collider is Paddle):
 		$explode.emitting = true

@@ -27,5 +27,5 @@ func on_level_won():
 
 func _on_level_won_button_pressed():
 	game_win.play()
-	LevelDefinitions.current_level = 2
+	LevelDefinitions.current_level = LevelDefinitions.current_level + 1
 	get_tree().reload_current_scene()

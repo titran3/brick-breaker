@@ -1,12 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://t0xggh0fw305"]
+[gd_scene load_steps=14 format=3 uid="uid://t0xggh0fw305"]
 
 [ext_resource type="Texture2D" uid="uid://c8l7ke1ygg27h" path="res://Assets/Ball.png" id="1_a23ou"]
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_iqqaa"]
 [ext_resource type="PackedScene" uid="uid://cemhxwjqkcc6i" path="res://Scenes/particles.tscn" id="3_aervv"]
 
+[sub_resource type="Gradient" id="Gradient_vvlwp"]
+offsets = PackedFloat32Array(0.0518519, 1)
+colors = PackedColorArray(0.4, 0.717647, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l8brg"]
+gradient = SubResource("Gradient_vvlwp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vopx5"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 121.05
+angular_velocity_min = -341.05
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_l8brg")
+
+[sub_resource type="Gradient" id="Gradient_vm7p0"]
+offsets = PackedFloat32Array(0, 0.37037, 0.959259)
+colors = PackedColorArray(0.927952, 0.87699, 0.989362, 1, 0.792157, 0.623529, 0.968627, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ou6f"]
+gradient = SubResource("Gradient_vm7p0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7hr5"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 78.95
+initial_velocity_max = 163.16
+angular_velocity_min = 1.4988e-14
+angular_velocity_max = 310.74
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = 25.0
+angle_max = 103.0
+scale_min = 2.0
+scale_max = 3.5
+color_ramp = SubResource("GradientTexture1D_8ou6f")
+
 [sub_resource type="Gradient" id="Gradient_827ou"]
 offsets = PackedFloat32Array(0.311111, 1)
-colors = PackedColorArray(1, 0.588235, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 0.714777, 0.995855, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_thp4k"]
 gradient = SubResource("Gradient_827ou")
@@ -16,6 +57,8 @@ particle_flag_disable_z = true
 direction = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 spread = 12.32
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 5.26
@@ -30,11 +73,30 @@ scale = Vector2(0.25, 0.25)
 motion_mode = 1
 script = ExtResource("1_iqqaa")
 
+[node name="brick" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_vopx5")
+lifetime = 1.5
+one_shot = true
+speed_scale = 4.89
+explosiveness = 0.25
+
+[node name="wall" parent="." instance=ExtResource("3_aervv")]
+scale = Vector2(1, 0.990738)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_m7hr5")
+lifetime = 1.2
+one_shot = true
+speed_scale = 7.5
+explosiveness = 0.8
+
 [node name="trail" type="GPUParticles2D" parent="."]
-amount = 150
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_pkb70")
 lifetime = 0.8
 speed_scale = 4.88
+explosiveness = 0.27
 trail_lifetime = 0.8
 
 [node name="explode" parent="." instance=ExtResource("3_aervv")]

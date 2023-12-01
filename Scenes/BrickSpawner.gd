@@ -11,6 +11,7 @@ const ROWS = 6
 @export var margin: Vector2 = Vector2(8,8)
 @onready var spawn_start = $"../Marker2D"
 
+
 var brick_count = 0
 
 func spawn():

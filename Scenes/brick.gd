@@ -6,6 +6,7 @@ signal brick_destroyed
 
 var level = 1
 
+@onready var explode = $GPUParticles2D
 @onready var sprite_2d = $Sprite2D
 @onready var collision_shape_2d = $CollisionShape2D
 
