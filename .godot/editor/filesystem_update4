@@ -7,3 +7,4 @@ res://Scenes/ui.tscn
 res://Scenes/brick.tscn
 res://Scenes/particles.tscn
 res://Scripts/ball.gd
+res://Scripts/level_definitions.gd
